@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Page</title>
+    <script>
+        async function displayReviewedQuestions() {
+            constresponse = await fetch("http://your-json-server-endpoint/questions")
+            const questions = await response.json();
+            const container= document.getElementById("questionsContainer");
+            container.innerHTML = "";
+
+            question.filter(q => q.reviewStatus).forEach((question,index) => {
+             const card = document.createElement("div");
+             card.style.border = "2px solid violet";
+             card.innerHTML = `<p>${index + 1}. &{question.question}</p>`;
+             container.appendChild(card);
+            
+        });
+            
+        }
+        window.onload= displayReviewedQuestions;
+    </script>
+</head>
+<body>
+    <nav>
+        <a href = "index.html">Home</a>
+        <a href = "quiz .html">Quiz</a>
+        <a href="questions.html">Questions</a>
+    </nav>
+    <h1>Reviewed Questions</h1>
+    <div id ="questionsContainer"></div>
+</body>
+</html>
